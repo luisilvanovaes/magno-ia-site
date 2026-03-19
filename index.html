@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magno-IA | Engenharia de Inteligência Artificial</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Magno-IA — Engenharia de IA personalizada para empresas. Custom LLMs, automação de processos, integração de APIs e arquitetura de dados preditiva.">
+    <meta name="keywords" content="inteligência artificial, LLM personalizado, automação de processos IA, integração OpenAI Anthropic, engenharia de software IA, agentes IA">
+    <meta name="author" content="Magno-IA">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0e17">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Magno-IA | Engenharia de Inteligência Artificial">
+    <meta property="og:description" content="Transformamos complexidade de dados em vantagem competitiva através de software inteligente, personalizado e seguro.">
+    <meta property="og:locale" content="pt_PT">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-escuro: #0a0e17;
+            --bg-card: #111827;
+            --bg-card-hover: #1a2236;
+            --primaria: #3b82f6;
+            --primaria-escura: #2563eb;
+            --primaria-glow: rgba(59, 130, 246, 0.12);
+            --whatsapp-color: #25d366;
+            --whatsapp-escuro: #1ebe5a;
+            --texto-claro: #f8f9fa;
+            --texto-muted: #94a3b8;
+            --borda: rgba(255, 255, 255, 0.07);
+            --fonte-principal: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--fonte-principal);
+            background-color: var(--bg-escuro);
+            color: var(--texto-claro);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── HEADER ── */
+        header {
+            background-color: rgba(10, 14, 23, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 18px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--borda);
+            transition: background 0.3s;
+        }
+
+        .header-content { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--primaria); text-decoration: none; letter-spacing: -0.5px; flex-shrink: 0; }
+        .logo span { color: var(--texto-claro); }
+
+        nav { display: flex; align-items: center; gap: 28px; }
+        nav a { color: var(--texto-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; white-space: nowrap; }
+        nav a:hover { color: var(--texto-claro); }
+
+        /* ── SELETOR DE IDIOMA ── */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--borda);
+            border-radius: 6px;
+            padding: 3px;
+            flex-shrink: 0;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--texto-muted);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-family: var(--fonte-principal);
+            transition: all 0.2s;
+            letter-spacing: 0.5px;
+        }
+        .lang-btn.active {
+            background: var(--primaria);
+            color: white;
+        }
+        .lang-btn:hover:not(.active) { color: var(--texto-claro); }
+
+        /* ── BOTÕES ── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.25s;
+            cursor: pointer;
+            border: none;
+            font-family: var(--fonte-principal);
+            white-space: nowrap;
+        }
+
+        .btn-primario { background-color: var(--primaria); color: white; }
+        .btn-primario:hover { background-color: var(--primaria-escura); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59, 130, 246, 0.35); }
+
+        .btn-fantasma { background: transparent; color: var(--texto-claro); border: 1px solid var(--borda); }
+        .btn-fantasma:hover { background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+
+        .btn-whatsapp { background-color: var(--whatsapp-color); color: white; }
+        .btn-whatsapp:hover { background-color: var(--whatsapp-escuro); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3); }
+
+        .btn-sm { padding: 9px 18px; font-size: 0.875rem; }
+
+        /* ── WHATSAPP FLOAT ── */
+        .whatsapp-float {
+            position: fixed;
+            width: 58px;
+            height: 58px;
+            bottom: 36px;
+            right: 36px;
+            background-color: var(--whatsapp-color);
+            color: #FFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+            z-index: 1000;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37, 211, 102, 0.6); }
+
+        /* ── HERO ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(ellipse at 50% 40%, #1a253a 0%, #0a0e17 65%);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(59,130,246,0.1);
+            border: 1px solid rgba(59,130,246,0.25);
+            color: var(--primaria);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+        .hero h1 span { color: var(--primaria); }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.15rem);
+            color: var(--texto-muted);
+            max-width: 620px;
+            margin: 0 auto 40px;
+            line-height: 1.75;
+        }
+
+        .hero-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* ── CABEÇALHO DE SECÇÃO ── */
+        .secao-header { text-align: center; margin-bottom: 64px; }
+        .secao-header h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+        }
+        .secao-header p { font-size: 1.05rem; color: var(--texto-muted); max-width: 560px; margin: 0 auto; }
+
+        .secao-label {
+            display: inline-block;
+            color: var(--primaria);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        /* ── SERVIÇOS ── */
+        .servicos { padding: 120px 0; background-color: var(--bg-escuro); }
+
+        .servicos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+
+        .servico-card {
+            background: var(--bg-card);
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 36px 30px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .servico-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primaria), transparent);
+            transform: scaleX(0);
+            transition: transform 0.35s;
+        }
+        .servico-card:hover {
+            border-color: rgba(59,130,246,0.22);
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 48px rgba(0,0,0,0.35);
+        }
+        .servico-card:hover::after { transform: scaleX(1); }
+
+        .servico-icone {
+            width: 52px;
+            height: 52px;
+            background: var(--primaria-glow);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: var(--primaria);
+        }
+        .servico-icone svg { width: 26px; height: 26px; }
+
+        .servico-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
+        .servico-card p { color: var(--texto-muted); font-size: 0.92rem; line-height: 1.7; }
+
+        /* ── METODOLOGIA ── */
+        .metodologia { padding: 120px 0; background: var(--bg-card); }
+
+        .metodologia-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+
+        .step { text-align: center; padding: 40px 24px; }
+
+        .step-num {
+            width: 56px;
+            height: 56px;
+            background: var(--primaria);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin: 0 auto 24px;
+            box-shadow: 0 0 0 8px rgba(59,130,246,0.1);
+        }
+
+        .step h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+        .step p { color: var(--texto-muted); font-size: 0.9rem; line-height: 1.65; }
+
+        /* ── FILOSOFIA / PILARES ── */
+        .pilares { padding: 120px 0; background-color: var(--bg-escuro); }
+
+        .pilares-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+
+        .pilar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--borda);
+            padding: 40px 36px;
+            border-radius: 12px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        .pilar-card:hover { border-color: rgba(59,130,246,0.22); transform: translateY(-5px); }
+
+        .pilar-icone { font-size: 2rem; margin-bottom: 20px; }
+        .pilar-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--primaria); margin-bottom: 14px; }
+        .pilar-card p { color: var(--texto-muted); font-size: 0.93rem; line-height: 1.7; }
+
+        /* ── CONTACTO ── */
+        .contacto {
+            padding: 130px 0;
+            background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-escuro) 100%);
+            text-align: center;
+        }
+        .contacto h2 {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        .contacto p { font-size: 1.05rem; color: var(--texto-muted); max-width: 540px; margin: 0 auto 40px; }
+
+        .contacto-info { margin-top: 36px; color: var(--texto-muted); font-size: 0.9rem; }
+        .contacto-info a { color: var(--primaria); text-decoration: none; }
+        .contacto-info a:hover { text-decoration: underline; }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 36px 0;
+            border-top: 1px solid var(--borda);
+            background: var(--bg-escuro);
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .footer-logo { font-size: 1.1rem; font-weight: 800; color: var(--primaria); }
+        .footer-logo span { color: var(--texto-muted); font-weight: 400; }
+        footer p { color: var(--texto-muted); font-size: 0.85rem; }
+        .footer-links { display: flex; gap: 20px; }
+        .footer-links a { color: var(--texto-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--texto-claro); }
+
+        /* ── ANIMAÇÕES FADE-IN ── */
+        .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+        .fade-in.visivel { opacity: 1; transform: translateY(0); }
+
+        /* ── RESPONSIVO ── */
+        @media (max-width: 860px) {
+            nav { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .hero-ctas { flex-direction: column; align-items: center; }
+            .footer-content { flex-direction: column; text-align: center; }
+            .footer-links { justify-content: center; }
+            .whatsapp-float { width: 52px; height: 52px; bottom: 24px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WhatsApp Flutuante -->
+    <a id="wa-float" href="https://wa.me/351963015479?text=Olá%20Magno-IA!%20Gostaria%20de%20falar%20com%20um%20engenheiro." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar via WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-content">
+            <a href="#" class="logo">Magno-<span>IA</span></a>
+            <nav aria-label="Navegação principal">
+                <a href="#servicos" data-i18n="nav.services">Serviços</a>
+                <a href="#metodologia" data-i18n="nav.methodology">Metodologia</a>
+                <a href="#filosofia" data-i18n="nav.philosophy">Filosofia</a>
+                <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+            </nav>
+            <div class="lang-toggle" aria-label="Selecionar idioma">
+                <button class="lang-btn active" data-lang="pt" onclick="setLanguage('pt')">PT</button>
+                <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+            </div>
+            <a id="header-cta" href="https://wa.me/351963015479?text=Olá!%20Solicito%20uma%20demonstração%20técnica." class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener" data-i18n="header.cta">
+                Falar Connosco
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="fade-in">
+                <div class="hero-badge" data-i18n="hero.badge">✦ Soluções com IA sob Medida</div>
+                <h1 data-i18n="hero.title">Inteligência Artificial<br>feita para <span>o seu negócio</span></h1>
+                <p data-i18n="hero.subtitle">Transformamos a complexidade dos dados em vantagem competitiva através de software inteligente, personalizado e seguro — para empresas em qualquer parte do mundo.</p>
+                <div class="hero-ctas">
+                    <a id="hero-cta1" href="https://wa.me/351963015479?text=Olá!%20Gostaria%20de%20falar%20com%20um%20engenheiro%20de%20IA." class="btn btn-primario" target="_blank" rel="noopener" data-i18n="hero.cta1">
+                        Fale Connosco
+                    </a>
+                    <a href="#servicos" class="btn btn-fantasma" data-i18n="hero.cta2">
+                        Ver Serviços
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section class="servicos" id="servicos">
+        <div class="container">
+            <div class="secao-header fade-in">
+                <span class="secao-label" data-i18n="services.label">O que construímos</span>
+                <h2 data-i18n="services.title">Serviços de Engenharia de Software</h2>
+                <p data-i18n="services.subtitle">Cada solução é desenhada de raiz para o contexto da sua empresa. Sem atalhos, sem soluções genéricas.</p>
+            </div>
+            <div class="servicos-grid">
+                <div class="servico-card fade-in">
+                    <div class="servico-icone" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456z"/>
+                        </svg>
+                    </div>
+                    <h4 data-i18n="service1.title">Implementação de LLMs</h4>
+                    <p data-i18n="service1.desc">Integração e fine-tuning de modelos de linguagem — GPT-4, Claude, Llama — personalizados com os dados e a terminologia específica da sua empresa.</p>
+                </div>
+                <div class="servico-card fade-in">
+                    <div class="servico-icone" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h4 data-i18n="service2.title">Automação de Processos</h4>
+                    <p data-i18n="service2.desc">Agentes inteligentes que executam fluxos de trabalho complexos de forma autónoma, reduzindo custos operacionais e eliminando o erro humano.</p>
+                </div>
+                <div class="servico-card fade-in">
+                    <div class="servico-icone" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
+                        </svg>
+                    </div>
+                    <h4 data-i18n="service3.title">Arquitetura de Dados</h4>
+                    <p data-i18n="service3.desc">Pipelines de dados robustos e escaláveis para alimentar sistemas de decisão preditiva em tempo real, convertendo dados em inteligência concreta.</p>
+                </div>
+                <div class="servico-card fade-in">
+                    <div class="servico-icone" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/>
+                        </svg>
+                    </div>
+                    <h4 data-i18n="service4.title">Integração de APIs</h4>
+                    <p data-i18n="service4.desc">Ligação segura entre a sua infraestrutura atual e as ferramentas de IA mais potentes do mercado — OpenAI, Anthropic, Mistral e outras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metodologia -->
+    <section class="metodologia" id="metodologia">
+        <div class="container">
+            <div class="secao-header fade-in">
+                <span class="secao-label" data-i18n="method.label">Como trabalhamos</span>
+                <h2 data-i18n="method.title">Da ideia ao sistema em produção</h2>
+                <p data-i18n="method.subtitle">Um processo estruturado que garante resultados concretos em cada fase do projeto.</p>
+            </div>
+            <div class="metodologia-steps">
+                <div class="step fade-in">
+                    <div class="step-num">1</div>
+                    <h4 data-i18n="step1.title">Diagnóstico</h4>
+                    <p data-i18n="step1.desc">Analisamos a sua infraestrutura, dados e processos para identificar onde a IA gera o maior retorno para o seu negócio.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-num">2</div>
+                    <h4 data-i18n="step2.title">Arquitetura</h4>
+                    <p data-i18n="step2.desc">Desenhamos a solução técnica mais adequada, selecionando os modelos, ferramentas e integrações mais indicadas.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-num">3</div>
+                    <h4 data-i18n="step3.title">Implementação</h4>
+                    <p data-i18n="step3.desc">Desenvolvemos, testamos e colocamos em produção com monitorização contínua e documentação técnica completa.</p>
+                </div>
+                <div class="step fade-in">
+                    <div class="step-num">4</div>
+                    <h4 data-i18n="step4.title">Evolução</h4>
+                    <p data-i18n="step4.desc">Acompanhamos e iteramos sobre o sistema para que melhore continuamente à medida que novos dados são gerados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filosofia / Pilares -->
+    <section class="pilares" id="filosofia">
+        <div class="container">
+            <div class="secao-header fade-in">
+                <span class="secao-label" data-i18n="philosophy.label">A nossa filosofia</span>
+                <h2 data-i18n="philosophy.title">Engenharia com Princípios</h2>
+                <p data-i18n="philosophy.subtitle">Três pilares que guiam todas as decisões técnicas que tomamos em cada projeto.</p>
+            </div>
+            <div class="pilares-grid">
+                <div class="pilar-card fade-in">
+                    <div class="pilar-icone" aria-hidden="true">🔒</div>
+                    <h3 data-i18n="pillar1.title">Segurança First</h3>
+                    <p data-i18n="pillar1.desc">A privacidade dos seus dados é inegociável. Implementamos arquiteturas conformes com o RGPD que garantem que o seu capital intelectual permanece na sua posse e sob o seu controlo.</p>
+                </div>
+                <div class="pilar-card fade-in">
+                    <div class="pilar-icone" aria-hidden="true">🌍</div>
+                    <h3 data-i18n="pillar2.title">Adaptação ao Contexto</h3>
+                    <p data-i18n="pillar2.desc">Cada cliente tem a sua realidade. Desenvolvemos software com alto padrão de qualidade e segurança, totalmente adaptado ao contexto do seu negócio, não importa o setor e onde quer que esteja.</p>
+                </div>
+                <div class="pilar-card fade-in">
+                    <div class="pilar-icone" aria-hidden="true">📈</div>
+                    <h3 data-i18n="pillar3.title">Código Escalável</h3>
+                    <p data-i18n="pillar3.desc">Construímos sistemas que crescem com o seu negócio. Da startup à grande organização, a nossa arquitetura suporta qualquer escala sem criar dívida técnica.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contacto" id="contacto">
+        <div class="container">
+            <div class="fade-in">
+                <span class="secao-label" data-i18n="contact.label">Próximo passo</span>
+                <h2 data-i18n="contact.title">Pronto para construir<br>o futuro da sua empresa?</h2>
+                <p data-i18n="contact.subtitle">Fale diretamente com um dos nossos engenheiros e receba uma avaliação técnica do potencial de IA no seu projeto — sem compromisso.</p>
+                <a id="contact-cta" href="https://wa.me/351963015479?text=Olá!%20Gostaria%20de%20agendar%20uma%20consultoria%20técnica%20de%20IA." class="btn btn-whatsapp" target="_blank" rel="noopener">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    <span data-i18n="contact.cta">Agendar Consultoria Técnica</span>
+                </a>
+                <div class="contacto-info">
+                    <p>
+                        <span data-i18n="contact.direct">Ou contacte-nos diretamente:</span>
+                        <a href="tel:+351934681404">+351 934 681 404</a>
+                        &nbsp;·&nbsp;
+                        <span data-i18n="contact.whatsapp">WhatsApp:</span>
+                        <a href="https://wa.me/351963015479" target="_blank" rel="noopener">+351 963 015 479</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Magno-<span>IA</span></div>
+                <p>&copy; 2026 Magno-IA · <span data-i18n="footer.tagline">Engenharia de Software &amp; Inteligência Artificial</span></p>
+                <div class="footer-links">
+                    <a href="#servicos" data-i18n="nav.services">Serviços</a>
+                    <a href="#metodologia" data-i18n="nav.methodology">Metodologia</a>
+                    <a href="#contacto" data-i18n="nav.contact">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ── TRADUÇÕES ── */
+        const translations = {
+            pt: {
+                'nav.services':       'Serviços',
+                'nav.methodology':    'Metodologia',
+                'nav.philosophy':     'Filosofia',
+                'nav.contact':        'Contacto',
+                'header.cta':         'Falar Connosco',
+                'hero.badge':         '✦ Soluções com IA sob Medida',
+                'hero.title':         'Inteligência Artificial<br>feita para <span>o seu negócio</span>',
+                'hero.subtitle':      'Transformamos a complexidade dos dados em vantagem competitiva através de software inteligente, personalizado e seguro — para empresas em qualquer parte do mundo.',
+                'hero.cta1':          'Fale Connosco',
+                'hero.cta2':          'Ver Serviços',
+                'services.label':     'O que construímos',
+                'services.title':     'Serviços de Engenharia de Software',
+                'services.subtitle':  'Cada solução é desenhada de raiz para o contexto da sua empresa. Sem atalhos, sem soluções genéricas.',
+                'service1.title':     'Implementação de LLMs',
+                'service1.desc':      'Integração e fine-tuning de modelos de linguagem — GPT-4, Claude, Llama — personalizados com os dados e a terminologia específica da sua empresa.',
+                'service2.title':     'Automação de Processos',
+                'service2.desc':      'Agentes inteligentes que executam fluxos de trabalho complexos de forma autónoma, reduzindo custos operacionais e eliminando o erro humano.',
+                'service3.title':     'Arquitetura de Dados',
+                'service3.desc':      'Pipelines de dados robustos e escaláveis para alimentar sistemas de decisão preditiva em tempo real, convertendo dados em inteligência concreta.',
+                'service4.title':     'Integração de APIs',
+                'service4.desc':      'Ligação segura entre a sua infraestrutura atual e as ferramentas de IA mais potentes do mercado — OpenAI, Anthropic, Mistral e outras.',
+                'method.label':       'Como trabalhamos',
+                'method.title':       'Da ideia ao sistema em produção',
+                'method.subtitle':    'Um processo estruturado que garante resultados concretos em cada fase do projeto.',
+                'step1.title':        'Diagnóstico',
+                'step1.desc':         'Analisamos a sua infraestrutura, dados e processos para identificar onde a IA gera o maior retorno para o seu negócio.',
+                'step2.title':        'Arquitetura',
+                'step2.desc':         'Desenhamos a solução técnica mais adequada, selecionando os modelos, ferramentas e integrações mais indicadas.',
+                'step3.title':        'Implementação',
+                'step3.desc':         'Desenvolvemos, testamos e colocamos em produção com monitorização contínua e documentação técnica completa.',
+                'step4.title':        'Evolução',
+                'step4.desc':         'Acompanhamos e iteramos sobre o sistema para que melhore continuamente à medida que novos dados são gerados.',
+                'philosophy.label':   'A nossa filosofia',
+                'philosophy.title':   'Engenharia com Princípios',
+                'philosophy.subtitle':'Três pilares que guiam todas as decisões técnicas que tomamos em cada projeto.',
+                'pillar1.title':      'Segurança First',
+                'pillar1.desc':       'A privacidade dos seus dados é inegociável. Implementamos arquiteturas conformes com o RGPD que garantem que o seu capital intelectual permanece na sua posse e sob o seu controlo.',
+                'pillar2.title':      'Adaptação ao Contexto',
+                'pillar2.desc':       'Cada cliente tem a sua realidade. Desenvolvemos software com alto padrão de qualidade e segurança, totalmente adaptado ao contexto do seu negócio, não importa o setor e onde quer que esteja.',
+                'pillar3.title':      'Código Escalável',
+                'pillar3.desc':       'Construímos sistemas que crescem com o seu negócio. Da startup à grande organização, a nossa arquitetura suporta qualquer escala sem criar dívida técnica.',
+                'contact.label':      'Próximo passo',
+                'contact.title':      'Pronto para construir<br>o futuro da sua empresa?',
+                'contact.subtitle':   'Fale diretamente com um dos nossos engenheiros e receba uma avaliação técnica do potencial de IA no seu projeto — sem compromisso.',
+                'contact.cta':        'Agendar Consultoria Técnica',
+                'contact.direct':     'Ou contacte-nos diretamente:',
+                'contact.whatsapp':   'WhatsApp:',
+                'footer.tagline':     'Engenharia de Software &amp; Inteligência Artificial',
+                'wa.float':           'Olá%20Magno-IA!%20Gostaria%20de%20falar%20com%20um%20engenheiro.',
+                'wa.header':          'Olá!%20Solicito%20uma%20demonstração%20técnica.',
+                'wa.hero':            'Olá!%20Gostaria%20de%20falar%20com%20um%20engenheiro%20de%20IA.',
+                'wa.contact':         'Olá!%20Gostaria%20de%20agendar%20uma%20consultoria%20técnica%20de%20IA.'
+            },
+            en: {
+                'nav.services':       'Services',
+                'nav.methodology':    'Methodology',
+                'nav.philosophy':     'Philosophy',
+                'nav.contact':        'Contact',
+                'header.cta':         'Talk to Us',
+                'hero.badge':         '✦ Custom AI Solutions',
+                'hero.title':         'Artificial Intelligence<br>built for <span>your business</span>',
+                'hero.subtitle':      'We turn data complexity into competitive advantage through intelligent, personalized and secure software — for businesses anywhere in the world.',
+                'hero.cta1':          'Talk to Us',
+                'hero.cta2':          'See Services',
+                'services.label':     'What we build',
+                'services.title':     'Software Engineering Services',
+                'services.subtitle':  'Each solution is built from scratch for your company\'s context. No shortcuts, no generic solutions.',
+                'service1.title':     'LLM Implementation',
+                'service1.desc':      'Integration and fine-tuning of language models — GPT-4, Claude, Llama — customized with your company\'s data and specific terminology.',
+                'service2.title':     'Process Automation',
+                'service2.desc':      'Intelligent agents that autonomously execute complex workflows, reducing operational costs and eliminating human error.',
+                'service3.title':     'Data Architecture',
+                'service3.desc':      'Robust and scalable data pipelines to power real-time predictive decision systems, converting data into actionable intelligence.',
+                'service4.title':     'API Integration',
+                'service4.desc':      'Secure connection between your current infrastructure and the most powerful AI tools on the market — OpenAI, Anthropic, Mistral and others.',
+                'method.label':       'How we work',
+                'method.title':       'From idea to production system',
+                'method.subtitle':    'A structured process that ensures concrete results at every phase of the project.',
+                'step1.title':        'Discovery',
+                'step1.desc':         'We analyze your infrastructure, data and processes to identify where AI generates the greatest return for your business.',
+                'step2.title':        'Architecture',
+                'step2.desc':         'We design the most suitable technical solution, selecting the right models, tools and integrations.',
+                'step3.title':        'Implementation',
+                'step3.desc':         'We develop, test and deploy to production with continuous monitoring and complete technical documentation.',
+                'step4.title':        'Evolution',
+                'step4.desc':         'We monitor and iterate on the system so it continuously improves as new data is generated.',
+                'philosophy.label':   'Our philosophy',
+                'philosophy.title':   'Engineering with Principles',
+                'philosophy.subtitle':'Three pillars that guide every technical decision we make on each project.',
+                'pillar1.title':      'Security First',
+                'pillar1.desc':       'Your data privacy is non-negotiable. We implement GDPR-compliant architectures that ensure your intellectual capital remains in your possession and under your control.',
+                'pillar2.title':      'Context Adaptation',
+                'pillar2.desc':       'Every client has their own reality. We develop software with high standards of quality and security, fully adapted to the context of your business — regardless of sector and wherever you are.',
+                'pillar3.title':      'Scalable Code',
+                'pillar3.desc':       'We build systems that grow with your business. From startup to large organization, our architecture supports any scale without creating technical debt.',
+                'contact.label':      'Next step',
+                'contact.title':      'Ready to build<br>the future of your business?',
+                'contact.subtitle':   'Speak directly with one of our engineers and receive a technical assessment of AI\'s potential in your project — no commitment required.',
+                'contact.cta':        'Schedule Technical Consultation',
+                'contact.direct':     'Or contact us directly:',
+                'contact.whatsapp':   'WhatsApp:',
+                'footer.tagline':     'Software Engineering &amp; Artificial Intelligence',
+                'wa.float':           'Hello%20Magno-IA!%20I%20would%20like%20to%20speak%20with%20an%20engineer.',
+                'wa.header':          'Hello!%20I%20would%20like%20to%20request%20a%20technical%20demo.',
+                'wa.hero':            'Hello!%20I%20would%20like%20to%20speak%20with%20an%20AI%20engineer.',
+                'wa.contact':         'Hello!%20I%20would%20like%20to%20schedule%20a%20technical%20consultation.'
+            }
+        };
+
+        /* ── APLICAR IDIOMA ── */
+        function setLanguage(lang) {
+            const t = translations[lang];
+
+            // Textos
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (t[key] !== undefined) {
+                    el.innerHTML = t[key];
+                }
+            });
+
+            // Links WhatsApp
+            const waBase = 'https://wa.me/351963015479?text=';
+            document.getElementById('wa-float').href     = waBase + t['wa.float'];
+            document.getElementById('header-cta').href   = waBase + t['wa.header'];
+            document.getElementById('hero-cta1').href    = waBase + t['wa.hero'];
+            document.getElementById('contact-cta').href  = waBase + t['wa.contact'];
+
+            // Botões do seletor
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Atributo lang do HTML e título da página
+            document.documentElement.lang = lang;
+            document.title = lang === 'en'
+                ? 'Magno-IA | Artificial Intelligence Engineering'
+                : 'Magno-IA | Engenharia de Inteligência Artificial';
+
+            localStorage.setItem('lang', lang);
+        }
+
+        // Carregar idioma guardado (padrão: PT)
+        const savedLang = localStorage.getItem('lang') || 'pt';
+        if (savedLang === 'en') setLanguage('en');
+
+        /* ── FADE-IN AO SCROLL ── */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visivel');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        /* ── HEADER SCROLL ── */
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.style.backgroundColor = window.scrollY > 60
+                ? 'rgba(10, 14, 23, 0.98)'
+                : 'rgba(10, 14, 23, 0.92)';
+        }, { passive: true });
+    </script>
+
+</body>
+</html>
