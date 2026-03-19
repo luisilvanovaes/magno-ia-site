@@ -279,7 +279,7 @@
         .servico-icone svg { width: 26px; height: 26px; }
 
         .servico-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
-        .servico-card p { color: var(--texto-muted); font-size: 0.92rem; line-height: 1.7; }
+        .servico-card p { color: var(--texto-muted); font-size: 0.92rem; line-height: 1.7; text-align: justify; hyphens: auto; }
 
         /* ── METODOLOGIA ── */
         .metodologia { padding: 120px 0; background: var(--bg-card); }
@@ -304,7 +304,7 @@
         }
 
         .step h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
-        .step p { color: var(--texto-muted); font-size: 0.9rem; line-height: 1.65; }
+        .step p { color: var(--texto-muted); font-size: 0.9rem; line-height: 1.65; text-align: justify; hyphens: auto; }
 
         /* ── FILOSOFIA / PILARES ── */
         .pilares { padding: 120px 0; background-color: var(--bg-escuro); }
@@ -322,7 +322,7 @@
 
         .pilar-icone { font-size: 2rem; margin-bottom: 20px; }
         .pilar-card h3 { font-size: 1.2rem; font-weight: 700; color: var(--primaria); margin-bottom: 14px; }
-        .pilar-card p { color: var(--texto-muted); font-size: 0.93rem; line-height: 1.7; }
+        .pilar-card p { color: var(--texto-muted); font-size: 0.93rem; line-height: 1.7; text-align: justify; hyphens: auto; }
 
         /* ── CONTACTO ── */
         .contacto {
@@ -341,6 +341,9 @@
         .contacto-info { margin-top: 36px; color: var(--texto-muted); font-size: 0.9rem; }
         .contacto-info a { color: var(--primaria); text-decoration: none; }
         .contacto-info a:hover { text-decoration: underline; }
+        .contacto-numeros { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; margin-top: 10px; }
+        .contacto-numero { white-space: nowrap; }
+        .contacto-separador { color: var(--borda); }
 
         /* ── FOOTER ── */
         footer {
@@ -369,6 +372,7 @@
         /* ── RESPONSIVO ── */
         @media (max-width: 860px) {
             nav { display: none; }
+            #header-cta { display: none; }
         }
 
         @media (max-width: 600px) {
@@ -376,6 +380,9 @@
             .footer-content { flex-direction: column; text-align: center; }
             .footer-links { justify-content: center; }
             .whatsapp-float { width: 52px; height: 52px; bottom: 24px; right: 20px; }
+            .servicos, .metodologia, .pilares, .contacto { padding: 70px 0; }
+            .hero { padding: 100px 0 50px; }
+            .secao-header { margin-bottom: 40px; }
         }
     </style>
 </head>
@@ -552,13 +559,10 @@
                     <span data-i18n="contact.cta">Agendar Consultoria Técnica</span>
                 </a>
                 <div class="contacto-info">
-                    <p>
-                        <span data-i18n="contact.direct">Ou contacte-nos diretamente:</span>
-                        <a href="tel:+351934681404">+351 934 681 404</a>
-                        &nbsp;·&nbsp;
-                        <span data-i18n="contact.whatsapp">WhatsApp:</span>
-                        <a href="https://wa.me/351963015479" target="_blank" rel="noopener">+351 963 015 479</a>
-                    </p>
+                    <p data-i18n="contact.direct">Ou contacte-nos diretamente:</p>
+                    <div class="contacto-numeros">
+                        <span class="contacto-numero"><span data-i18n="contact.phone">Telemóvel:</span> <a href="tel:+351934681404">+351 934 681 404</a></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -629,6 +633,7 @@
                 'contact.subtitle':   'Fale diretamente com um dos nossos engenheiros e receba uma avaliação técnica do potencial de IA no seu projeto — sem compromisso.',
                 'contact.cta':        'Agendar Consultoria Técnica',
                 'contact.direct':     'Ou contacte-nos diretamente:',
+                'contact.phone':      'Telemóvel:',
                 'contact.whatsapp':   'WhatsApp:',
                 'footer.tagline':     'Engenharia de Software &amp; Inteligência Artificial',
                 'wa.float':           'Olá%20Magno-IA!%20Gostaria%20de%20falar%20com%20um%20engenheiro.',
@@ -683,6 +688,7 @@
                 'contact.subtitle':   'Speak directly with one of our engineers and receive a technical assessment of AI\'s potential in your project — no commitment required.',
                 'contact.cta':        'Schedule Technical Consultation',
                 'contact.direct':     'Or contact us directly:',
+                'contact.phone':      'Phone:',
                 'contact.whatsapp':   'WhatsApp:',
                 'footer.tagline':     'Software Engineering &amp; Artificial Intelligence',
                 'wa.float':           'Hello%20Magno-IA!%20I%20would%20like%20to%20speak%20with%20an%20engineer.',
