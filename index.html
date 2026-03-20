@@ -365,6 +365,226 @@
         .footer-links a { color: var(--texto-muted); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
         .footer-links a:hover { color: var(--texto-claro); }
 
+        /* ── HERO AI ACT BADGE ── */
+        .hero-aiact-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(220, 53, 69, 0.1);
+            border: 1px solid rgba(220, 53, 69, 0.28);
+            color: #f87171;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .hero-aiact-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #f87171;
+            animation: aiact-pulse 2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes aiact-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%       { opacity: 0.4; transform: scale(0.75); }
+        }
+
+        /* ── COMPLIANCE AI ACT ── */
+        .compliance {
+            padding: 120px 0;
+            background: var(--bg-card);
+            border-top: 1px solid var(--borda);
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .compliance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .compliance-card {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            background: var(--bg-escuro);
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 28px 24px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .compliance-card:hover {
+            border-color: rgba(59, 130, 246, 0.22);
+            transform: translateY(-4px);
+        }
+
+        .compliance-num {
+            width: 38px;
+            height: 38px;
+            background: var(--primaria-glow);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primaria);
+            flex-shrink: 0;
+        }
+
+        .compliance-body h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--texto-claro);
+        }
+
+        .compliance-body p {
+            color: var(--texto-muted);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .compliance-entregaveis {
+            background: var(--bg-escuro);
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            padding: 24px 28px;
+            margin-bottom: 40px;
+        }
+
+        .compliance-entregaveis-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--texto-muted);
+            margin-bottom: 16px;
+        }
+
+        .compliance-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .compliance-tags span {
+            font-size: 0.875rem;
+            color: var(--texto-claro);
+            background: rgba(59, 130, 246, 0.07);
+            border: 1px solid rgba(59, 130, 246, 0.14);
+            padding: 5px 14px;
+            border-radius: 100px;
+        }
+
+        .compliance-cta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .compliance-cta-meta {
+            font-size: 0.9rem;
+            color: var(--texto-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .compliance-cta-sep { color: var(--borda); }
+
+        .btn-compliance {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            background: #dc2626;
+            color: white;
+            transition: all 0.25s;
+            white-space: nowrap;
+            font-family: var(--fonte-principal);
+        }
+
+        .btn-compliance:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(220, 38, 38, 0.3);
+        }
+
+        /* ── CONTACTO DUAL ── */
+        .contacto-dual {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contacto-card {
+            border-radius: 16px;
+            padding: 40px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .contacto-card--compliance {
+            background: rgba(220, 38, 38, 0.06);
+            border: 1px solid rgba(220, 38, 38, 0.18);
+        }
+
+        .contacto-card--build {
+            background: var(--bg-card);
+            border: 1px solid var(--borda);
+        }
+
+        .contacto-card-tag {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--texto-muted);
+        }
+
+        .contacto-card h3 {
+            font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            color: var(--texto-claro);
+            margin: 0;
+        }
+
+        .contacto-card p {
+            font-size: 0.95rem;
+            color: var(--texto-muted);
+            line-height: 1.7;
+            margin: 0;
+            flex: 1;
+            text-align: left;
+        }
+
         /* ── ANIMAÇÕES FADE-IN ── */
         .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
         .fade-in.visivel { opacity: 1; transform: translateY(0); }
@@ -383,6 +603,9 @@
             .servicos, .metodologia, .pilares, .contacto { padding: 70px 0; }
             .hero { padding: 100px 0 50px; }
             .secao-header { margin-bottom: 40px; }
+            .compliance { padding: 70px 0; }
+            .compliance-cta { flex-direction: column; align-items: flex-start; }
+            .contacto-card { padding: 28px 24px; }
         }
     </style>
 </head>
@@ -403,6 +626,7 @@
                 <a href="#servicos" data-i18n="nav.services">Serviços</a>
                 <a href="#metodologia" data-i18n="nav.methodology">Metodologia</a>
                 <a href="#filosofia" data-i18n="nav.philosophy">Filosofia</a>
+                <a href="#compliance" data-i18n="nav.compliance">AI Act</a>
                 <a href="#contacto" data-i18n="nav.contact">Contacto</a>
             </nav>
             <div class="lang-toggle" aria-label="Selecionar idioma">
@@ -420,6 +644,10 @@
         <div class="container">
             <div class="fade-in">
                 <div class="hero-badge" data-i18n="hero.badge">✦ Soluções com IA sob Medida</div>
+                <div class="hero-aiact-badge">
+                    <span class="hero-aiact-dot"></span>
+                    <span data-i18n="hero.aiact">Auditoria AI Act · Deadline agosto 2026</span>
+                </div>
                 <h1 data-i18n="hero.title">Inteligência Artificial<br>feita para <span>o seu negócio</span></h1>
                 <p data-i18n="hero.subtitle">Transformamos a complexidade dos dados em vantagem competitiva através de software inteligente, personalizado e seguro — para empresas em qualquer parte do mundo.</p>
                 <div class="hero-ctas">
@@ -480,6 +708,75 @@
                     <h4 data-i18n="service4.title">Integração de APIs</h4>
                     <p data-i18n="service4.desc">Ligação segura entre a sua infraestrutura atual e as ferramentas de IA mais potentes do mercado — OpenAI, Anthropic, Mistral e outras.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compliance AI Act -->
+    <section class="compliance" id="compliance">
+        <div class="container">
+            <div class="secao-header fade-in">
+                <span class="secao-label" data-i18n="compliance.label">Conformidade Regulatória</span>
+                <h2 data-i18n="compliance.title">A sua empresa está pronta<br>para o <span style="color: var(--primaria);">AI Act</span>?</h2>
+                <p data-i18n="compliance.subtitle">O regulamento europeu de inteligência artificial entra em pleno vigor em agosto de 2026. As penalidades chegam a <strong style="color: var(--texto-claro);">€35 milhões</strong> ou <strong style="color: var(--texto-claro);">7% do volume de negócios</strong> anual. A maioria das empresas ainda não fez o inventário básico dos seus sistemas.</p>
+            </div>
+
+            <div class="compliance-grid fade-in">
+                <div class="compliance-card">
+                    <div class="compliance-num">1</div>
+                    <div class="compliance-body">
+                        <h4 data-i18n="compliance.step1.title">AI Inventory</h4>
+                        <p data-i18n="compliance.step1.desc">Mapeamos todos os sistemas de IA em uso — incluindo ferramentas SaaS de terceiros com IA embutida. Identificamos o papel da empresa: provider, deployer ou ambos.</p>
+                    </div>
+                </div>
+                <div class="compliance-card">
+                    <div class="compliance-num">2</div>
+                    <div class="compliance-body">
+                        <h4 data-i18n="compliance.step2.title">Classificação de Risco</h4>
+                        <p data-i18n="compliance.step2.desc">Classificamos cada sistema nos níveis do AI Act — proibido, alto risco, limitado ou mínimo — com raciocínio legal documentado e obrigações aplicáveis por sistema.</p>
+                    </div>
+                </div>
+                <div class="compliance-card">
+                    <div class="compliance-num">3</div>
+                    <div class="compliance-body">
+                        <h4 data-i18n="compliance.step3.title">Gap Analysis</h4>
+                        <p data-i18n="compliance.step3.desc">Identificamos o que falta face às obrigações aplicáveis: documentação técnica, supervisão humana, logging, conformity assessment e cruzamento com o RGPD.</p>
+                    </div>
+                </div>
+                <div class="compliance-card">
+                    <div class="compliance-num">4</div>
+                    <div class="compliance-body">
+                        <h4 data-i18n="compliance.step4.title">Plano de Remediação</h4>
+                        <p data-i18n="compliance.step4.desc">Entregamos um roadmap priorizado por risco legal, com ações concretas, responsáveis e prazos — para estar totalmente conforme antes de agosto 2026.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="compliance-entregaveis fade-in">
+                <span class="compliance-entregaveis-label" data-i18n="compliance.deliverables.label">O que recebe:</span>
+                <div class="compliance-tags">
+                    <span data-i18n="compliance.d1">✓ AI System Register</span>
+                    <span data-i18n="compliance.d2">✓ Risk Classification Matrix</span>
+                    <span data-i18n="compliance.d3">✓ Gap Analysis Report</span>
+                    <span data-i18n="compliance.d4">✓ Remediation Roadmap</span>
+                    <span data-i18n="compliance.d5">✓ AI Literacy Pack</span>
+                    <span data-i18n="compliance.d6">✓ Executive Summary</span>
+                </div>
+            </div>
+
+            <div class="compliance-cta fade-in">
+                <div class="compliance-cta-meta">
+                    <span data-i18n="compliance.duration">⏱ Duração: 3 a 4 semanas</span>
+                    <span class="compliance-cta-sep">·</span>
+                    <span data-i18n="compliance.availability">🌍 Portugal, Europa e Brasil</span>
+                </div>
+                <a id="compliance-cta"
+                   href="https://wa.me/351963015479?text=Olá!%20Gostaria%20de%20agendar%20um%20diagnóstico%20AI%20Act%20gratuito."
+                   class="btn btn-compliance"
+                   target="_blank" rel="noopener"
+                   data-i18n="compliance.cta">
+                    Diagnóstico gratuito de 30 minutos →
+                </a>
             </div>
         </div>
     </section>
@@ -548,22 +845,42 @@
     <!-- Contacto -->
     <section class="contacto" id="contacto">
         <div class="container">
-            <div class="fade-in">
-                <span class="secao-label" data-i18n="contact.label">Próximo passo</span>
-                <h2 data-i18n="contact.title">Pronto para construir<br>o futuro da sua empresa?</h2>
-                <p data-i18n="contact.subtitle">Fale diretamente com um dos nossos engenheiros e receba uma avaliação técnica do potencial de IA no seu projeto — sem compromisso.</p>
-                <a id="contact-cta" href="https://wa.me/351963015479?text=Olá!%20Gostaria%20de%20agendar%20uma%20consultoria%20técnica%20de%20IA." class="btn btn-whatsapp" target="_blank" rel="noopener">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                    <span data-i18n="contact.cta">Agendar Consultoria Técnica</span>
-                </a>
-                <div class="contacto-info">
-                    <p data-i18n="contact.direct">Ou contacte-nos diretamente:</p>
-                    <div class="contacto-numeros">
-                        <span class="contacto-numero"><span data-i18n="contact.phone">Telemóvel:</span> <a href="tel:+351934681404">+351 934 681 404</a></span>
+            <div class="contacto-dual fade-in">
+
+                <div class="contacto-card contacto-card--compliance">
+                    <div class="contacto-card-tag" data-i18n="contacto.tag1">Já usa IA</div>
+                    <h3 data-i18n="contacto.title1">Está conforme<br>com o AI Act?</h3>
+                    <p data-i18n="contacto.desc1">Faça o diagnóstico antes de agosto 2026 e evite penalidades até €35M. Auditoria completa em 3–4 semanas.</p>
+                    <a href="https://wa.me/351963015479?text=Olá!%20Gostaria%20de%20agendar%20um%20diagnóstico%20AI%20Act%20gratuito."
+                       class="btn btn-compliance"
+                       target="_blank" rel="noopener"
+                       data-i18n="contacto.cta1">
+                        Diagnóstico gratuito de 30 min →
+                    </a>
+                </div>
+
+                <div class="contacto-card contacto-card--build">
+                    <div class="contacto-card-tag" data-i18n="contacto.tag2">Quer implementar IA</div>
+                    <h3 data-i18n="contacto.title2">Construímos sistemas<br>conformes desde o início</h3>
+                    <p data-i18n="contacto.desc2">Implementação de LLMs, agentes e automação de processos — com arquitetura segura e documentação AI Act incluída desde o primeiro dia.</p>
+                    <a id="contact-cta"
+                       href="https://wa.me/351963015479?text=Olá!%20Gostaria%20de%20agendar%20uma%20consultoria%20técnica%20de%20IA."
+                       class="btn btn-whatsapp"
+                       target="_blank" rel="noopener"
+                       data-i18n="contacto.cta2">
+                        Falar com um engenheiro →
+                    </a>
+                    <div class="contacto-info" style="margin-top: 20px;">
+                        <p data-i18n="contact.direct">Ou contacte-nos diretamente:</p>
+                        <div class="contacto-numeros">
+                            <span class="contacto-numero">
+                                <span data-i18n="contact.phone">Telemóvel:</span>
+                                <a href="tel:+351934681404">+351 934 681 404</a>
+                            </span>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -590,9 +907,11 @@
                 'nav.services':       'Serviços',
                 'nav.methodology':    'Metodologia',
                 'nav.philosophy':     'Filosofia',
+                'nav.compliance':     'AI Act',
                 'nav.contact':        'Contacto',
                 'header.cta':         'Falar Connosco',
                 'hero.badge':         '✦ Soluções com IA sob Medida',
+                'hero.aiact':         'Auditoria AI Act · Deadline agosto 2026',
                 'hero.title':         'Inteligência Artificial<br>feita para <span>o seu negócio</span>',
                 'hero.subtitle':      'Transformamos a complexidade dos dados em vantagem competitiva através de software inteligente, personalizado e seguro — para empresas em qualquer parte do mundo.',
                 'hero.cta1':          'Fale Connosco',
@@ -628,6 +947,35 @@
                 'pillar2.desc':       'Cada cliente tem a sua realidade. Desenvolvemos software com alto padrão de qualidade e segurança, totalmente adaptado ao contexto do seu negócio, não importa o setor e onde quer que esteja.',
                 'pillar3.title':      'Código Escalável',
                 'pillar3.desc':       'Construímos sistemas que crescem com o seu negócio. Da startup à grande organização, a nossa arquitetura suporta qualquer escala sem criar dívida técnica.',
+                'compliance.label':              'Conformidade Regulatória',
+                'compliance.title':              'A sua empresa está pronta<br>para o <span style="color:#3b82f6">AI Act</span>?',
+                'compliance.subtitle':           'O regulamento europeu de inteligência artificial entra em pleno vigor em agosto de 2026. As penalidades chegam a <strong>€35 milhões</strong> ou <strong>7% do volume de negócios</strong> anual. A maioria das empresas ainda não fez o inventário básico dos seus sistemas.',
+                'compliance.step1.title':        'AI Inventory',
+                'compliance.step1.desc':         'Mapeamos todos os sistemas de IA em uso — incluindo ferramentas SaaS de terceiros com IA embutida. Identificamos o papel da empresa: provider, deployer ou ambos.',
+                'compliance.step2.title':        'Classificação de Risco',
+                'compliance.step2.desc':         'Classificamos cada sistema nos níveis do AI Act — proibido, alto risco, limitado ou mínimo — com raciocínio legal documentado e obrigações aplicáveis por sistema.',
+                'compliance.step3.title':        'Gap Analysis',
+                'compliance.step3.desc':         'Identificamos o que falta face às obrigações aplicáveis: documentação técnica, supervisão humana, logging, conformity assessment e cruzamento com o RGPD.',
+                'compliance.step4.title':        'Plano de Remediação',
+                'compliance.step4.desc':         'Entregamos um roadmap priorizado por risco legal, com ações concretas, responsáveis e prazos — para estar totalmente conforme antes de agosto 2026.',
+                'compliance.deliverables.label': 'O que recebe:',
+                'compliance.d1':                 '✓ AI System Register',
+                'compliance.d2':                 '✓ Risk Classification Matrix',
+                'compliance.d3':                 '✓ Gap Analysis Report',
+                'compliance.d4':                 '✓ Remediation Roadmap',
+                'compliance.d5':                 '✓ AI Literacy Pack',
+                'compliance.d6':                 '✓ Executive Summary',
+                'compliance.duration':           '⏱ Duração: 3 a 4 semanas',
+                'compliance.availability':       '🌍 Portugal, Europa e Brasil',
+                'compliance.cta':                'Diagnóstico gratuito de 30 minutos →',
+                'contacto.tag1':   'Já usa IA',
+                'contacto.title1': 'Está conforme<br>com o AI Act?',
+                'contacto.desc1':  'Faça o diagnóstico antes de agosto 2026 e evite penalidades até €35M. Auditoria completa em 3–4 semanas.',
+                'contacto.cta1':   'Diagnóstico gratuito de 30 min →',
+                'contacto.tag2':   'Quer implementar IA',
+                'contacto.title2': 'Construímos sistemas<br>conformes desde o início',
+                'contacto.desc2':  'Implementação de LLMs, agentes e automação de processos — com arquitetura segura e documentação AI Act incluída desde o primeiro dia.',
+                'contacto.cta2':   'Falar com um engenheiro →',
                 'contact.label':      'Próximo passo',
                 'contact.title':      'Pronto para construir<br>o futuro da sua empresa?',
                 'contact.subtitle':   'Fale diretamente com um dos nossos engenheiros e receba uma avaliação técnica do potencial de IA no seu projeto — sem compromisso.',
@@ -645,9 +993,11 @@
                 'nav.services':       'Services',
                 'nav.methodology':    'Methodology',
                 'nav.philosophy':     'Philosophy',
+                'nav.compliance':     'AI Act',
                 'nav.contact':        'Contact',
                 'header.cta':         'Talk to Us',
                 'hero.badge':         '✦ Custom AI Solutions',
+                'hero.aiact':         'AI Act Audit · August 2026 Deadline',
                 'hero.title':         'Artificial Intelligence<br>built for <span>your business</span>',
                 'hero.subtitle':      'We turn data complexity into competitive advantage through intelligent, personalized and secure software — for businesses anywhere in the world.',
                 'hero.cta1':          'Talk to Us',
@@ -683,6 +1033,35 @@
                 'pillar2.desc':       'Every client has their own reality. We develop software with high standards of quality and security, fully adapted to the context of your business — regardless of sector and wherever you are.',
                 'pillar3.title':      'Scalable Code',
                 'pillar3.desc':       'We build systems that grow with your business. From startup to large organization, our architecture supports any scale without creating technical debt.',
+                'compliance.label':              'Regulatory Compliance',
+                'compliance.title':              'Is your company ready<br>for the <span style="color:#3b82f6">AI Act</span>?',
+                'compliance.subtitle':           'The EU Artificial Intelligence Act comes into full effect in August 2026. Penalties reach up to <strong>€35 million</strong> or <strong>7% of annual global turnover</strong>. Most companies have not yet done a basic inventory of their AI systems.',
+                'compliance.step1.title':        'AI Inventory',
+                'compliance.step1.desc':         'We map all AI systems in use — including third-party SaaS tools with embedded AI. We identify the company\'s role: provider, deployer, or both.',
+                'compliance.step2.title':        'Risk Classification',
+                'compliance.step2.desc':         'We classify each system across AI Act levels — prohibited, high-risk, limited, or minimal — with documented legal reasoning and applicable obligations per system.',
+                'compliance.step3.title':        'Gap Analysis',
+                'compliance.step3.desc':         'We identify what is missing against applicable obligations: technical documentation, human oversight, logging, conformity assessment, and GDPR cross-compliance.',
+                'compliance.step4.title':        'Remediation Plan',
+                'compliance.step4.desc':         'We deliver a roadmap prioritised by legal risk, with specific actions, owners, and deadlines — to achieve full compliance before August 2026.',
+                'compliance.deliverables.label': 'What you receive:',
+                'compliance.d1':                 '✓ AI System Register',
+                'compliance.d2':                 '✓ Risk Classification Matrix',
+                'compliance.d3':                 '✓ Gap Analysis Report',
+                'compliance.d4':                 '✓ Remediation Roadmap',
+                'compliance.d5':                 '✓ AI Literacy Pack',
+                'compliance.d6':                 '✓ Executive Summary',
+                'compliance.duration':           '⏱ Duration: 3 to 4 weeks',
+                'compliance.availability':       '🌍 Portugal, Europe & Brazil',
+                'compliance.cta':                'Free 30-minute diagnostic →',
+                'contacto.tag1':   'Already using AI',
+                'contacto.title1': 'Are you compliant<br>with the AI Act?',
+                'contacto.desc1':  'Get your diagnostic before August 2026 and avoid penalties up to €35M. Full audit in 3–4 weeks.',
+                'contacto.cta1':   'Free 30-minute diagnostic →',
+                'contacto.tag2':   'Want to implement AI',
+                'contacto.title2': 'We build compliant<br>systems from day one',
+                'contacto.desc2':  'LLM implementation, agents and process automation — with secure architecture and AI Act documentation included from the first day.',
+                'contacto.cta2':   'Talk to an engineer →',
                 'contact.label':      'Next step',
                 'contact.title':      'Ready to build<br>the future of your business?',
                 'contact.subtitle':   'Speak directly with one of our engineers and receive a technical assessment of AI\'s potential in your project — no commitment required.',
@@ -716,6 +1095,12 @@
             document.getElementById('header-cta').href   = waBase + t['wa.header'];
             document.getElementById('hero-cta1').href    = waBase + t['wa.hero'];
             document.getElementById('contact-cta').href  = waBase + t['wa.contact'];
+            if (document.getElementById('compliance-cta')) {
+                document.getElementById('compliance-cta').href = 'https://wa.me/351963015479?text=' +
+                    (lang === 'en'
+                        ? 'Hello!%20I%20would%20like%20to%20schedule%20a%20free%20AI%20Act%20diagnostic.'
+                        : 'Olá!%20Gostaria%20de%20agendar%20um%20diagnóstico%20AI%20Act%20gratuito.');
+            }
 
             // Botões do seletor
             document.querySelectorAll('.lang-btn').forEach(btn => {
